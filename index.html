@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnomalyWare | Digital Solutions</title>
+    <title>AnomalyWare</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             background-color: #111111;
@@ -52,6 +53,7 @@
             object-fit: cover;
         }
 
+        /* Custom Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -65,6 +67,48 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #b91c1c;
         }
+
+        /* Specific style for centering two items in a three-column grid */
+        @media (min-width: 768px) {
+             #projects .centered-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+             #projects .project-card-wrapper:first-child {
+                grid-column: 2 / span 1; /* Starts in the second column */
+            }
+             #projects .project-card-wrapper:nth-child(2) {
+                grid-column: 3 / span 1; /* Starts in the third column */
+            }
+        }
+        @media (min-width: 1024px) {
+            #projects .centered-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+            #projects .project-card-wrapper:first-child {
+                grid-column: 2 / span 1; /* Starts in the second column */
+            }
+            #projects .project-card-wrapper:nth-child(2) {
+                grid-column: 3 / span 1; /* Starts in the third column */
+            }
+        }
+        /* Fallback for smaller screens and the desired two-column layout for two cards */
+        @media (max-width: 767px) {
+            #projects .centered-grid {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            #projects .centered-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            #projects .project-card-wrapper:first-child {
+                grid-column: 1 / span 1; 
+            }
+            #projects .project-card-wrapper:nth-child(2) {
+                grid-column: 2 / span 1; 
+            }
+        }
+        
     </style>
     <script>
         tailwind.config = {
@@ -115,13 +159,15 @@
                 </a>
             </div>
         </section>
+        
+        <hr/>
 
         <section id="about" class="section-padding bg-secondary-dark border-t border-b border-red-800/50">
             <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4 scroll-reveal">
                 <div class="p-8 border border-red-700/50 rounded-xl shadow-2xl shadow-black/50 bg-black/30">
                     <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-accent-red">Our Ethos</h2>
                     <p class="text-gray-300 text-lg leading-relaxed">
-                        Simple and effective products, tailored for all sorts of purposes. Our principals are based on simplicity and usablilty. No need for allat bloat. 
+                        Simple and effective products, tailored for all sorts of purposes. Our principals are based on simplicity and usability. No need for allat bloat. 
                     </p>
                 </div>
                 <div class="space-y-6">
@@ -141,81 +187,88 @@
             </div>
         </section>
 
+        <hr/>
+
         <section id="projects" class="section-padding bg-primary-black">
-            <div class="max-w-6xl mx-auto px-4">
+            <div class="max-w-6xl mx-auto px-4 w-full">
                 <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-red scroll-reveal">Project Dossiers</h2>
                 
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid gap-8 centered-grid">
 
-                    <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 scroll-reveal">
-                        <div class="project-thumbnail">
-                            <img 
-                                src="https://github.com/anomalyware/anomalyware.github.io/blob/main/hwhelper.png?raw=true" 
-                                alt="HW Helper, a free and easy tool to help with managing assignments"
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x150/333/bbb?text=Image+Unavailable';"
-                            >
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2 text-white">HW-Helper</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A free and easy tool to help students with managing and tracking assignments.</p>
-                            <a href="https://anomalyware.github.io/hw-helper/" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center">
-                                Check it out &rarr;
-                            </a>
+                    <div class="project-card-wrapper scroll-reveal">
+                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+                            <div class="project-thumbnail">
+                                <img 
+                                    src="https://github.com/anomalyware/anomalyware.github.io/blob/main/hwhelper.png?raw=true" 
+                                    alt="HW Helper, a free and easy tool to help with managing assignments"
+                                    onerror="this.onerror=null; this.src='https://placehold.co/600x150/333/bbb?text=Image+Unavailable';"
+                                >
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-semibold mb-2 text-white">HW-Helper</h3>
+                                <p class="text-gray-400 mb-4 text-sm flex-grow">A free and easy tool to help students with managing and tracking assignments.</p>
+                                <a href="https://anomalyware.github.io/hw-helper/" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center mt-auto">
+                                    Check it out &rarr;
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 scroll-reveal" style="transition-delay: 0.2s;">
-                        <div class="project-thumbnail">
-                            <img 
-                                src="https://github.com/anomalyware/anomalyware.github.io/blob/main/jsonvis.png?raw=true" 
-                                alt="A beautiful and easy-to-use free tool to visualize json blobs"
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x150/333/bbb?text=Image+Unavailable';"
-                            >
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2 text-white">JSON Vis</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A beautiful and easy-to-use free tool to visualize json blobs</p>
-                            <a href="https://anomalyware.github.io/jsonvis/" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center">
-                                Take a Look &rarr;
-                            </a>
+                    <div class="project-card-wrapper scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+                            <div class="project-thumbnail">
+                                <img 
+                                    src="https://github.com/anomalyware/anomalyware.github.io/blob/main/jsonvis.png?raw=true" 
+                                    alt="A beautiful and easy-to-use free tool to visualize json blobs"
+                                    onerror="this.onerror=null; this.src='https://placehold.co/600x150/333/bbb?text=Image+Unavailable';"
+                                >
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-semibold mb-2 text-white">JSON Vis</h3>
+                                <p class="text-gray-400 mb-4 text-sm flex-grow">A beautiful and easy-to-use free tool to visualize json blobs</p>
+                                <a href="https://anomalyware.github.io/jsonvis/" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center mt-auto">
+                                    Take a Look &rarr;
+                                </a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
+        <hr/>
+
         <section id="contact" class="section-padding bg-secondary-dark border-t border-red-800/50">
             <div class="max-w-4xl mx-auto px-4 w-full">
-                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-red scroll-reveal">Liaison Required</h2>
+                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-red scroll-reveal">Liaison Required 📧</h2>
 
-                <div class="grid md:grid-cols-2 gap-8 scroll-reveal">
-                    <div class="space-y-6 bg-black/50 p-8 rounded-xl border border-red-800/50">
-                        <p class="text-gray-400 text-lg">Initiate a secure communication channel. We prefer direct, technical inquiries.</p>
+                <div class="bg-black/50 p-8 sm:p-12 rounded-xl border border-red-800/50 shadow-2xl scroll-reveal">
+                    
+                    <p class="text-gray-300 text-xl font-light mb-8 text-center">
+                        Initiate a secure communication channel. We prefer direct, technical inquiries.
+                    </p>
 
-                        <div class="flex items-center space-x-3">
-                            <span class="text-accent-red text-2xl">&bull;</span>
-                            <div>
-                                <span class="block text-text-red-light font-bold">Secure Email</span>
-                                <a href="mailto:hiatusdev@outlook.com" class="text-gray-300 hover:text-white transition">hiatusdev@outlook.com</a>
-                            </div>
+                    <div class="grid sm:grid-cols-3 gap-6 text-center">
+                        <div class="p-4 bg-gray-900 rounded-lg hover:bg-red-900/30 transition duration-300">
+                            <span class="block text-text-red-light font-bold text-lg mb-1">Secure Email</span>
+                            <a href="mailto:hiatusdev@outlook.com" class="text-gray-300 hover:text-white transition text-sm sm:text-base">hiatusdev@outlook.com</a>
                         </div>
 
-                        <div class="flex items-center space-x-3">
-                            <span class="text-accent-red text-2xl">&bull;</span>
-                            <div>
-                                <span class="block text-text-red-light font-bold">Discord Channel</span>
-                                <a href="https://discord.gg/a" target="_blank" class="text-gray-300 hover:text-white transition">AnomalyWare (Invite)</a>
-                            </div>
+                        <div class="p-4 bg-gray-900 rounded-lg hover:bg-red-900/30 transition duration-300">
+                            <span class="block text-text-red-light font-bold text-lg mb-1">Discord Channel</span>
+                            <a href="https://discord.gg/a" target="_blank" class="text-gray-300 hover:text-white transition text-sm sm:text-base">anomalyware-HQ (Invite)</a>
                         </div>
 
-                        <div class="flex items-center space-x-3">
-                            <span class="text-accent-red text-2xl">&bull;</span>
-                            <div>
-                                <span class="block text-text-red-light font-bold">Telegram Secure</span>
-                                <a href="https://t.me/hiatusv1" target="_blank" class="text-gray-300 hover:text-white transition">@AnomalyWare</a>
-                            </div>
+                        <div class="p-4 bg-gray-900 rounded-lg hover:bg-red-900/30 transition duration-300">
+                            <span class="block text-text-red-light font-bold text-lg mb-1">Telegram Secure</span>
+                            <a href="https://t.me/hiatusv1" target="_blank" class="text-gray-300 hover:text-white transition text-sm sm:text-base">@AnomalyOps</a>
                         </div>
                     </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <p class="text-gray-500 italic text-sm">For comprehensive inquiries, a direct form will be made available soon.</p>
                 </div>
             </div>
         </section>
@@ -241,6 +294,10 @@
 
         const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                // Adjust threshold for 'landing' section to prevent instant activation on short pages
+                const isLanding = entry.target.id === 'landing';
+                
+                // Only change link if intersecting (and past the top for non-landing sections)
                 if (entry.isIntersecting) {
                     const currentSectionId = entry.target.id;
                     
@@ -257,8 +314,8 @@
                 }
             });
         }, {
-            rootMargin: "-50% 0px -50% 0px", 
-            threshold: 0 
+            rootMargin: "-33% 0px -33% 0px", // Increased margin to make section detection less sensitive
+            threshold: 0 // Threshold is still 0, but margin helps define the "active" viewport area
         });
 
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -270,7 +327,7 @@
             });
         }, {
             threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px" 
+            rootMargin: "0px 0px -50px 0px" // Start animating earlier as element comes into view
         });
 
         sections.forEach(section => {
@@ -281,18 +338,7 @@
             revealObserver.observe(element);
         });
 
-        function showMessage() {
-            const messageBox = document.getElementById('status-message');
-            messageBox.classList.remove('hidden');
-            
-            setTimeout(() => {
-                messageBox.classList.add('hidden');
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-            }, 5000);
-        }
-
+        // Ensure landing section elements are visible on load
         document.querySelector('#landing .scroll-reveal').classList.add('visible');
     </script>
 </body>
