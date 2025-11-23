@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LambdaWare</title>
     <script src="https://cdn.tailwindcss.com"></script>
-        <style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
         body {
@@ -15,8 +15,6 @@
             position: relative;
             overflow-x: hidden;
         }
-
-
 
         .section-padding {
             padding: 6rem 1rem;
@@ -72,8 +70,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #2563eb;
         }
-
-
 
         /* Specific style for centering two items in a three-column grid */
         @media (min-width: 768px) {
@@ -177,15 +173,15 @@
                     </p>
                 </div>
                 <div class="space-y-6">
-                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal glow-card">
+                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal">
                         <h3 class="text-xl font-semibold text-text-blue-light">Lightweight</h3>
                         <p class="text-sm text-gray-400">No extra fluff and no crowded UIs. Just what you need, where you need.</p>
                     </div>
-                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal glow-card" style="transition-delay: 0.2s;">
+                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal" style="transition-delay: 0.2s;">
                         <h3 class="text-xl font-semibold text-text-blue-light">Intuitive Simplicity</h3>
                         <p class="text-sm text-gray-400">No more complicated workflows and head-scratching bullshit.</p>
                     </div>
-                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal glow-card" style="transition-delay: 0.4s;">
+                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal" style="transition-delay: 0.4s;">
                         <h3 class="text-xl font-semibold text-text-blue-light">For the people, by the people</h3>
                         <p class="text-sm text-gray-400">We aren't delusional idiots who have no clue what people want. We use what we make too, yk.</p>
                     </div>
@@ -202,7 +198,7 @@
                 <div class="grid gap-8 centered-grid">
 
                     <div class="project-card-wrapper scroll-reveal">
-                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-blue-900/10 border border-blue-900/50 hover:border-accent-blue transition duration-300 transform hover:-translate-y-1 h-full flex flex-col glow-card">
+                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-blue-900/10 border border-blue-900/50 hover:border-accent-blue transition duration-300 transform hover:-translate-y-1 h-full flex flex-col">
                             <div class="project-thumbnail">
                                 <img 
                                     src="https://github.com/lambda-ware/lambda-ware.github.io/blob/main/hwhelper.png?raw=true" 
@@ -221,7 +217,7 @@
                     </div>
 
                     <div class="project-card-wrapper scroll-reveal" style="transition-delay: 0.2s;">
-                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-blue-900/10 border border-blue-900/50 hover:border-accent-blue transition duration-300 transform hover:-translate-y-1 h-full flex flex-col glow-card">
+                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-blue-900/10 border border-blue-900/50 hover:border-accent-blue transition duration-300 transform hover:-translate-y-1 h-full flex flex-col">
                             <div class="project-thumbnail">
                                 <img 
                                     src="https://github.com/lambda-ware/lambda-ware.github.io/blob/main/jsonvis.png?raw=true" 
@@ -300,19 +296,17 @@
 
         const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                const isLanding = entry.target.id === 'landing';
-                
                 if (entry.isIntersecting) {
                     const currentSectionId = entry.target.id;
                     
                     navLinks.forEach(link => {
-                        link.classList.remove('border-b-2', 'border-accent-blue', 'text-accent-blue');
+                        link.classList.remove('border-b-2', 'text-accent-blue');
                         link.classList.add('text-gray-300');
                     });
 
                     const activeLink = document.querySelector(`.nav-link[data-section="${currentSectionId}"]`);
                     if (activeLink) {
-                        activeLink.classList.add('border-b-2', 'border-accent-blue', 'text-accent-blue');
+                        activeLink.classList.add('border-b-2', 'text-accent-blue');
                         activeLink.classList.remove('text-gray-300');
                     }
                 }
